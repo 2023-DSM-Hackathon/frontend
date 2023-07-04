@@ -42,7 +42,7 @@ const Login = () => {
             <S.ButtonContainer>
                 <S.SubLink>
                     <p>회원이 아니신가요?</p>
-                    <S.LinkLogin onClick={()=> router.push('/login')}>회원가입</S.LinkLogin>
+                    <S.LinkLogin onClick={()=> router.push('/signup')}>회원가입</S.LinkLogin>
                 </S.SubLink>
                 <Button value="로그인"/>
             </S.ButtonContainer>
