@@ -6,5 +6,6 @@ export const color = {
     primary5:"#23D412",
     primary6:"#0CB60D",
     primary7:"#089814",
-    primary8:"#067A17"
+    primary8:"#067A17",
+    main: "#65A522"
 };
