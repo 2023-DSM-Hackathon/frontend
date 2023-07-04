@@ -7,5 +7,13 @@ export const color = {
     primary6:"#0CB60D",
     primary7:"#089814",
     primary8:"#067A17",
-    main: "#65A522"
+    main: "#65A522",
+    main2: "#85D82E",
+    white: "#FFFFFF",
+    grayLight2: "#EFF4F4",
+    grayLight1: "#E1E8EA",
+    grayBase: "#B6BEC1",
+    grayDark1: "#7A8184",
+    grayDark2: "#2E3133",
+    black: "#000000",
 };
