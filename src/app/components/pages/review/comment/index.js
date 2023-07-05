@@ -1,25 +1,55 @@
 import Button from "@/app/components/common/Button";
 import * as S from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useSearchParams } from "next/navigation";
 
-const Comment = () => {
-    const [comment, setComment] = useState([
-        {name:"홍길동", content:"우와 열심히 하셨네여! 짝짝"},
-        {name:"가나다", content:"이야야야ㅑ야야ㅑ양야ㅑ야야야야ㅑ야야 기깔납니다이야야야ㅑ야야ㅑ양야ㅑ야야야야ㅑ야야 기깔납니다이야야야ㅑ야야ㅑ양야ㅑ야야야야ㅑ야야 기깔납니다이야야야ㅑ야야ㅑ양야ㅑ야야야야ㅑ야야 기깔납니다이야야야ㅑ야야ㅑ양야ㅑ야야야야ㅑ야야 기깔납니다앞으로도 더 열심히 하세요"}
-    ]);
+const BASEURL = process.env.NEXT_PUBLIC_SERVER;
+
+
+const Comment = ({comments}) => {
+    const router = useSearchParams();
+    const reviewID = router.get('id');
+
+    const [comment, setComment] = useState("");
+
+    const onChange = (e) => {
+        setComment(e.target.value)
+    }
+
+    const SubmitComment = () => {
+        const token  = localStorage.getItem('token');
+
+        axios
+        .request({
+            url: `${BASEURL}/comments/${reviewID}`,
+            method: 'post',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            data:{
+                "content": comment
+            }
+        })
+        .then((res) => {
+        })
+        .catch(() => {
+            alert('댓글 작성 실패');
+        });
+    }
 
     return (
         <S.Container>
-            <S.CountText>댓글 {comment.length}개</S.CountText>
+            <S.CountText>댓글 {comments.length}개</S.CountText>
             <S.InputContainer>
-                <S.Input placeholder="댓글을 입력해주세요"/>
-                <S.Submit>댓글 등록</S.Submit>
+                <S.Input onChange={onChange} value={comment} placeholder="댓글을 입력해주세요"/>
+                <S.Submit onClick={()=>SubmitComment()}>댓글 등록</S.Submit>
             </S.InputContainer>
             <S.CommentContainer>
                 {
-                    comment.map(d=>
-                        <S.EachComment>
-                            <p>{d.name}</p>
+                    comments.map(d=>
+                        <S.EachComment key={d.id}>
+                            <p>{d.nickname}</p>
                             <p>{d.content}</p>
                         </S.EachComment>
                     )
