@@ -20,45 +20,45 @@ const Main = () => {
 
   const [post, setPost] = useState([]);
 
-  // useEffect(()=>{
-  //   if(!localStorage.getItem("token")) router.push('/login')
-  // },[])
+  useEffect(()=>{
+    if(!localStorage.getItem("token")) router.push('/login')
+  },[])
 
-  // useEffect(()=>{
-  //   const token = localStorage.getItem('token');
+  useEffect(()=>{
+    const token = localStorage.getItem('token');
 
-  //   if(type === "re"){
-  //     axios
-  //       .request({
-  //           url: `${BASEURL}/reviews`,
-  //           method: 'get',
-  //           headers: {
-  //             "Authorization": `Bearer ${token}`
-  //         }
-  //       })
-  //       .then((res) => {
-  //           setPost(res.data.reviews)
-  //       })
-  //       .catch(() => {
-  //           alert('모집글 불러오기 실패');
-  //       });
-  //   }else{
-  //     axios
-  //     .request({
-  //         url: `${BASEURL}/feeds`,
-  //         method: 'get',
-  //         headers: {
-  //           "Authorization": `Bearer ${token}`
-  //       }
-  //     })
-  //     .then((res) => {
-  //         setPost(res.data.feeds)
-  //     })
-  //     .catch(() => {
-  //         alert('모집글 불러오기 실패');
-  //     });
-  //   }
-  // },[type]);
+    if(type === "re"){
+      axios
+        .request({
+            url: `${BASEURL}/reviews`,
+            method: 'get',
+            headers: {
+              "Authorization": `Bearer ${token}`
+          }
+        })
+        .then((res) => {
+            setPost(res.data.reviews)
+        })
+        .catch(() => {
+            alert('모집글 불러오기 실패');
+        });
+    }else{
+      axios
+      .request({
+          url: `${BASEURL}/feeds`,
+          method: 'get',
+          headers: {
+            "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+          setPost(res.data.feeds)
+      })
+      .catch(() => {
+          alert('모집글 불러오기 실패');
+      });
+    }
+  },[type]);
 
     return(
         <S.FlexBox>
