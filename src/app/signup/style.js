@@ -45,4 +45,21 @@ export const SelectBox = styled.select`
 `
 export const SelectTitle = styled(BodyLarge)`
     color: ${color.black}
+`;
+
+export const SignUpBtn = styled.button`
+    outline: none;
+    border: none;
+    padding: 14px 22px;
+	border-radius: 8px;
+	cursor: pointer;
+    background-color: ${color.primary6};
+    text-align: center;
+    color: white;
+    :hover {
+		background-color: ${color.primary5};
+	}
+    :active {
+        background-color: ${color.primary8};
+    }
 `

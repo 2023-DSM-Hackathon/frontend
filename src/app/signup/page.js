@@ -1,11 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AuthLayout from "../components/common/AuthLayout";
 import Input from "../components/common/Input";
 import * as S from "./style";
 import { useRouter } from "next/navigation";
-import Button from "../components/common/Button";
+import axios from "axios";
+
+const BASEURL = process.env.NEXT_PUBLIC_SERVER;
 
 const SignUp = () => {
     const router= useRouter();
@@ -24,17 +26,36 @@ const SignUp = () => {
 		{ name: "birth", title: "생년월일", value: "", placeholder: "실제 본인 생년월일을 입력해주세요", type:"date" },
 	];
 
-    useEffect(()=>{
-        console.log(userData)
-    },[userData])
-
     const onChange = (e) => {
 		const { name, value } = e.target;
 		setUserData({
 			...userData,
 			[name]: value
 		})
-    }
+    };
+
+    const SingUp = () => {
+        axios
+        .request({
+            url: `${BASEURL}/users`,
+            method: 'post',
+            data: {
+                "nickname": userData.nick,
+                "birthDate": userData.birth,
+                "sex": userData.gender,
+                "account_id": userData.id,
+                "password": userData.password,
+            },
+        })
+        .then((res) => {
+            router.push('/login');
+        })
+        .catch(() => {
+            alert('회원가입 실패');
+        });
+    };
+
+
     return(
         <AuthLayout where="right" title="SIGN UP">
             <S.InputContainer>
@@ -46,8 +67,8 @@ const SignUp = () => {
             <S.SelectContainer>
                 <S.SelectTitle>성별</S.SelectTitle>
                 <S.SelectBox name="gender" onChange={onChange}>
-                    <option value="man">남성</option>
-                    <option value="woman">여성</option>
+                    <option value="MALE">남성</option>
+                    <option value="FEMALE">여성</option>
                 </S.SelectBox>
             </S.SelectContainer>
             </S.InputContainer>
@@ -56,7 +77,7 @@ const SignUp = () => {
                     <p>회원이신가요?</p>
                     <S.LinkLogin onClick={()=> router.push('/login')}>로그인</S.LinkLogin>
                 </S.SubLink>
-                <Button value="회원가입"/>
+                <S.SignUpBtn onClick={()=>SingUp()}>회원가입</S.SignUpBtn>
             </S.ButtonContainer>
         </AuthLayout>
     )
