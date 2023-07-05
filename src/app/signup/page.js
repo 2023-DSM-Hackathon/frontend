@@ -41,7 +41,7 @@ const SignUp = () => {
             method: 'post',
             data: {
                 "nickname": userData.nick,
-                "birthDate": userData.birth,
+                "birth_date": userData.birth,
                 "sex": userData.gender,
                 "account_id": userData.id,
                 "password": userData.password,
@@ -52,6 +52,7 @@ const SignUp = () => {
         })
         .catch(() => {
             alert('회원가입 실패');
+
         });
     };
 
@@ -60,8 +61,8 @@ const SignUp = () => {
         <AuthLayout where="right" title="SIGN UP">
             <S.InputContainer>
             {
-                inputType.map(d=>{
-                    return <Input title={d.title} width="100%" placeholder={d.placeholder} name={d.name} onChange={onChange} type={d.type}/>
+                inputType.map((d,i)=>{
+                    return <Input key={i} title={d.title} width="100%" placeholder={d.placeholder} name={d.name} onChange={onChange} type={d.type}/>
                 })
             }
             <S.SelectContainer>

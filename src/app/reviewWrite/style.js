@@ -13,7 +13,7 @@ export const FlexBox2 = styled.div`
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 70%;
     margin-top: 50px;
     margin-bottom: 100px;
     gap: 30px;

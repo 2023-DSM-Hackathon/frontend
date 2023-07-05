@@ -13,11 +13,11 @@ const Post = ({title, posts, link, type}) =>{
                 <S.Link onClick={() => router.push(link)}>모두보기</S.Link>
             </S.TitleContainer>
             <S.PostContainer>
-                {posts.map(d=>
+                {posts.map((d,i)=>
                     type === 1 ?
-                        <Recruitment title={d.title} date={d.date} time={d.meeting_time} place={d.place}/>
+                        <Recruitment key={i} title={d.title} date={d.date} time={d.meeting_time} place={d.place}/>
                         :
-                        <Review title={d.title} content={d.content} image_url={d.image_url}/>
+                        <Review key={i} title={d.title} content={d.content} image_url={d.image_url}/>
                         )}
             </S.PostContainer>
         </S.Container>

@@ -12,6 +12,6 @@ export const FlexBox2 = styled.div`
 export const Container = styled.div`
     display: flex;
     gap: 50px;
-    width: 90%;
+    width: 70%;
     margin-top: 50px;
 `

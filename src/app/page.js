@@ -20,46 +20,67 @@ const Main = () => {
 
   const [post, setPost] = useState([]);
 
-  useEffect(()=>{
-    const token = localStorage.getItem('token');
+  // useEffect(()=>{
+  //   if(!localStorage.getItem("token")) router.push('/login')
+  // },[])
 
-    if(type === "re"){
-      axios
-        .request({
-            url: `${BASEURL}/reviews`,
-            method: 'get',
-            headers: {
-              "Authorization": `Bearer ${token}`
-          }
-        })
-        .then((res) => {
-            setPost(res.data.reviews)
-        })
-        .catch(() => {
-            alert('모집글 불러오기 실패');
-        });
-    }else{
-      axios
-      .request({
-          url: `${BASEURL}/feeds`,
-          method: 'get',
-          headers: {
-            "Authorization": `Bearer ${token}`
-        }
-      })
-      .then((res) => {
-          setPost(res.data.feeds)
-      })
-      .catch(() => {
-          alert('모집글 불러오기 실패');
-      });
-    }
-  },[type]);
+  // useEffect(()=>{
+  //   const token = localStorage.getItem('token');
+
+  //   if(type === "re"){
+  //     axios
+  //       .request({
+  //           url: `${BASEURL}/reviews`,
+  //           method: 'get',
+  //           headers: {
+  //             "Authorization": `Bearer ${token}`
+  //         }
+  //       })
+  //       .then((res) => {
+  //           setPost(res.data.reviews)
+  //       })
+  //       .catch(() => {
+  //           alert('모집글 불러오기 실패');
+  //       });
+  //   }else{
+  //     axios
+  //     .request({
+  //         url: `${BASEURL}/feeds`,
+  //         method: 'get',
+  //         headers: {
+  //           "Authorization": `Bearer ${token}`
+  //       }
+  //     })
+  //     .then((res) => {
+  //         setPost(res.data.feeds)
+  //     })
+  //     .catch(() => {
+  //         alert('모집글 불러오기 실패');
+  //     });
+  //   }
+  // },[type]);
 
     return(
         <S.FlexBox>
             <Header/>
                 <S.FlexBox2>
+                  <S.InfoContainer>
+                    <S.BgImg>
+                    </S.BgImg>
+                    <S.TitleContainer>
+                      <S.Title>
+                        <p>같이 할 사람 모집!</p>
+                        <S.LogoImg src="assets/AppLogo4.png"/>
+                      </S.Title>
+                      <S.SubTitleContainer>
+                        <p>조깅</p>
+                        <p>을 하면서 동시에</p>
+                        <p>쓰레기</p>
+                        <p>를 줍는 운동</p>
+                      </S.SubTitleContainer>
+                      <S.InfoBtn onClick={() => router.push('/info')}>더 알아보기</S.InfoBtn>
+                    </S.TitleContainer>
+                  </S.InfoContainer>
                 <S.Container>
                   <S.SelectContainer>
                     {
@@ -90,14 +111,14 @@ const Main = () => {
                     {
                       type === "re"?
                         <S.ReviewContainer>
-                          {post.map(d=>
-                              <Review {...d}/>
+                          {post.map((d,i)=>
+                              <Review key={i} {...d}/>
                           )}
                         </S.ReviewContainer>
                         :
                         <S.PostContainer>
-                          {post.map(d=>
-                            <RecruitmentLarge {...d}/>
+                          {post.map((d,i)=>
+                            <RecruitmentLarge key={i} {...d}/>
                           )}
                         </S.PostContainer>
                     }

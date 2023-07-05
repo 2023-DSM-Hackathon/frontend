@@ -33,8 +33,8 @@ const Mypage = () =>{
             setUser(data.user_profile);
             setAchievements(data.achievements);
             setFeeds(data.feeds);
-            setFeeds(data.applies);
-            setFeeds(data.reviews);
+            setApplies(data.applies);
+            setReviews(data.reviews);
         })
         .catch(() => {
             alert('내 정보 불러오기 실패');

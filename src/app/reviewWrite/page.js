@@ -5,16 +5,19 @@ import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import * as S from "./style";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const BASEURL = process.env.NEXT_PUBLIC_SERVER;
 
 
 const ReviewWrite = () =>{
+    const router = useRouter();
+
 
     const [userData, setUserData] = useState({
 		title: "",
         content:"",
-        img:""
+        img: "",
 	});
 
     const inputType = [
@@ -30,9 +33,21 @@ const ReviewWrite = () =>{
 			[name]: value
 		})
     }
+    const onChangeFiles = (e)=>{
+        const {name, files} = e.target;
+        setUserData({
+            ...userData,
+            [name]: files[0]
+        })
+    }
 
     const Submit = () => {
         const token = localStorage.getItem('token');
+
+        const formData = new FormData();
+        formData.append("title", userData.title);
+        formData.append("content", userData.content);
+        formData.append("image_url", userData.img);
 
         axios
         .request({
@@ -41,17 +56,14 @@ const ReviewWrite = () =>{
             headers: {
                 "Authorization": `Bearer ${token}`
             },
-            data:{
-                "title": userData.title,
-                "content": userData.content,
-                "image_url": userData.img 
-            }
+            data: formData
         })
         .then((res) => {
             router.push('/')
         })
-        .catch(() => {
+        .catch((err) => {
             alert('작성 실패');
+            console.log(err)
         });
     }
 
@@ -68,11 +80,11 @@ const ReviewWrite = () =>{
                         </S.TextAreaContainer>
                         <S.TextAreaContainer>
                             <S.InputTitle></S.InputTitle>
-                            <Input onChange={onChange} name={inputType[2].name} title={inputType[2].title} type={inputType[2].type} accept=".image/*"/>
+                            <Input onChange={onChangeFiles} name={inputType[2].name} title={inputType[2].title} type={inputType[2].type} accept=".png, .jpg"/>
                         </S.TextAreaContainer>
                     </S.InputContainer>
                     <S.Submit onClick={()=>Submit()}>등록하기</S.Submit>
-                </S.Container>  
+                </S.Container>
             </S.FlexBox2>
         </S.FlexBox>
     )

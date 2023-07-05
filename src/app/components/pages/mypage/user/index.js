@@ -27,8 +27,8 @@ export const User = ({id, nickname, birth_date, account_id, gender, acachievemen
             </S.UserInfoContainer>
             <S.UserInfoContainer>
                 {
-                    acachievements.map(d=>
-                        <S.CrownContainer>
+                    acachievements.map((d,i)=>
+                        <S.CrownContainer key={i}>
                             <Crown fill={d.success? "#EAD947": color.grayBase} width="80px"/>
                             <p>{d.content}</p>
                         </S.CrownContainer>

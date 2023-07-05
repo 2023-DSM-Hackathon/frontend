@@ -40,8 +40,8 @@ const MyReview = () => {
                     <TitleLarge>내가 작성한 후기글</TitleLarge>
                     <S.PostContainer>
                         {
-                            post.map(d=>
-                                <Review {...d}/>
+                            post.map((d,i)=>
+                                <Review key={i} {...d}/>
                             )
                         }
                     </S.PostContainer>

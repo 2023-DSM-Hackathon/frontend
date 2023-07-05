@@ -87,7 +87,7 @@ const RecruitmentWrite = () =>{
                             <S.TextArea onChange={onChange} name={inputType[5].name} placeholder={inputType[5].placeholder}/>
                         </S.TextAreaContainer>
                     </S.InputContainer>
-                    <S.Submit onChange={()=>write()}>등록하기</S.Submit>
+                    <S.Submit onClick={()=>write()}>등록하기</S.Submit>
                 </S.Container>  
             </S.FlexBox2>
         </S.FlexBox>

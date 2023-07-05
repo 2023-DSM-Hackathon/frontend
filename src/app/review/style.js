@@ -13,6 +13,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 50px;
-    width: 90%;
+    width: 70%;
     margin-top: 50px;
 `

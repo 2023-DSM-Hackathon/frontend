@@ -1,4 +1,3 @@
-import Button from "@/app/components/common/Button";
 import * as S from "./style";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -47,7 +46,7 @@ const Comment = ({comments}) => {
             </S.InputContainer>
             <S.CommentContainer>
                 {
-                    comments.map(d=>
+                    comments.map((d)=>
                         <S.EachComment key={d.id}>
                             <p>{d.nickname}</p>
                             <p>{d.content}</p>

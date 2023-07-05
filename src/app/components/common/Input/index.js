@@ -7,7 +7,8 @@ const Input = ({
     name,
     value,
     onChange,
-    width="100%"
+    width="100%",
+    accept
   }) => {
     return(
         <S.Container width={width}>
@@ -18,6 +19,7 @@ const Input = ({
                 type={type}
                 name={name}
                 value={value}
+                accept={accept}
             />
         </S.Container>
     )

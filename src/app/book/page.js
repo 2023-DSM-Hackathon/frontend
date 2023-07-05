@@ -38,8 +38,8 @@ const MyBook = () => {
                     <TitleLarge>참가 신청한 줍깅</TitleLarge>
                     <S.PostContainer>
                         {
-                            post.map(d=>
-                                <RecruitmentLarge {...d}/>
+                            post.map((d,i)=>
+                                <RecruitmentLarge key={i} {...d}/>
                             )
                         }
                     </S.PostContainer>

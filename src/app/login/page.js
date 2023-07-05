@@ -53,8 +53,8 @@ const Login = () => {
         <AuthLayout where="left" title="LOGIN">
             <S.InputContainer>
             {
-                inputType.map(d=>{
-                    return <Input title={d.title} width="100%" placeholder={d.placeholder} name={d.name} onChange={onChange} type={d.type}/>
+                inputType.map((d,i)=>{
+                    return <Input key={i} title={d.title} width="100%" placeholder={d.placeholder} name={d.name} onChange={onChange} type={d.type}/>
                 })
             }
             </S.InputContainer>

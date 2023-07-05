@@ -13,16 +13,18 @@ const Application = ({place,date, meeting_time, current_head_count, head_count, 
     const application = () => {
         const token  = localStorage.getItem('token');
 
+        
         axios
         .request({
             url: `${BASEURL}/feeds/${postId}`,
-            method: 'post',
+            method: is_applied ? "delete" : "post",
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         })
         .then((res) => {
-            alert("신청이 완료되었습니다.")
+            if(is_applied) alert("신청이 취소되었습니다.")
+            else alert("신청이 완료되었습니다.")
         })
         .catch(() => {
             alert('신청 실패');
