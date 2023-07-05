@@ -1,7 +1,37 @@
 import { Body2 } from "@/app/text";
 import * as S from "./style";
+import { useSearchParams } from "next/navigation";
+import axios from "axios";
+
+const BASEURL = process.env.NEXT_PUBLIC_SERVER;
+
 
 const Application = () => {
+    const router = useSearchParams();
+    const postId = router.get('id');
+
+    const application = () => {
+        const token  = localStorage.getItem('token')
+        axios
+        .request({
+            url: `${BASEURL}/feeds/${postId}`,
+            method: 'post',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then((res) => {
+            const data = res.data
+            setUser(data.user_profile);
+            setAchievements(data.achievements);
+            setFeeds(data.feeds);
+            setFeeds(data.applies);
+            setFeeds(data.reviews);
+        })
+        .catch(() => {
+            alert('내 정보 불러오기 실패');
+        });
+    }
     return (
         <S.Container>
             <S.FixedContainer>
@@ -24,7 +54,7 @@ const Application = () => {
                     </S.InfoEachContainer>
                     
                 </S.InfoContainer>
-                <S.BookBtn>신청하기</S.BookBtn>
+                <S.BookBtn onClick={()=>application()}>신청하기</S.BookBtn>
                 <S.UserListContainer>
                     <Body2>현재 신청자 목록</Body2>
                     <S.UserList>
