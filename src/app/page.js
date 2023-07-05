@@ -60,7 +60,7 @@ const Main = () => {
                         return(
                           <>
                             {type === "re"?
-                            <PostVeiw {...d}/>
+                            <Review {...d}/>
                             :
                             <RecruitmentLarge {...d}/>
                           }

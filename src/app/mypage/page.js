@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Header from "../components/common/Header";
-import Post from "../components/pages/mypage/post";
 import User from "../components/pages/mypage/user";
 import * as S from "./style";
+import Post from "../components/pages/mypage/post";
 
 const Mypage = () =>{
     const [posts, setPosts] = useState([
@@ -17,7 +17,7 @@ const Mypage = () =>{
             title:"참가 신청한 줍깅",
             post: [{title:"asdas",content:"asdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdf", name:"asdas"},{title:"asdas",content:"asdasdasdasdfasdfasdf", img:"assets/authBgImg.png", name:"asdas"},{title:"asdas",content:"asdasdasdasdfasdfasdf", img:"assets/AppLogo.png", name:"asdas"},{title:"asdas",content:"asdasdasdasdfasdfasdf", img:"assets/AppLogo.png", name:"asdas"}],
             link:"/",
-            type:2
+            type:1
         },{
             title:"내가 작성한 후기글",
             post: [{title:"asdas",content:"asdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdfasdasdasdasdfasdfasdf", img:"assets/AppLogo.png", name:"asdas"},{title:"asdas",content:"asdasdasdasdfasdfasdf", img:"assets/AppLogo.png", name:"asdas"},{title:"asdas",content:"asdasdasdasdfasdfasdf", img:"assets/AppLogo.png",date:"123.213.2", time:"23:00", place:"asdasdas", name:"asdas"}],

@@ -1,6 +1,6 @@
 import * as S from "./style";
 
-const Recruitment = ({title, date, time, place, name}) => {    
+const Recruitment = ({title, date, time, place, nickname}) => {    
     return(
         <S.Container>
             <div>
@@ -18,9 +18,6 @@ const Recruitment = ({title, date, time, place, name}) => {
                     <S.Content>{place}</S.Content>
                 </S.EachContainer>
             </div>
-            <S.NameContainer>
-                <p>{name}</p>
-            </S.NameContainer>
         </S.Container>
     )
 }
