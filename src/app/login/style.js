@@ -24,7 +24,22 @@ export const SubLink = styled.div`
 export const LinkLogin = styled.p`
     color: ${color.grayDark1};
 `
-
+export const Loginbtn = styled.button`
+    outline: none;
+    border: none;
+    padding: 14px 22px;
+	border-radius: 8px;
+	cursor: pointer;
+    background-color: ${color.primary6};
+    text-align: center;
+    color: white;
+    :hover {
+		background-color: ${color.primary5};
+	}
+    :active {
+        background-color: ${color.primary8};
+    }
+`
 
 export const SelectContainer =styled.div`
     display: flex;
