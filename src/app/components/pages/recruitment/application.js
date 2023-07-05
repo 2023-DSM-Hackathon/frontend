@@ -6,7 +6,7 @@ import axios from "axios";
 const BASEURL = process.env.NEXT_PUBLIC_SERVER;
 
 
-const Application = () => {
+const Application = ({place,date, meeting_time, current_head_count, head_count, status,is_applied}) => {
     const router = useSearchParams();
     const postId = router.get('id');
 
@@ -34,23 +34,31 @@ const Application = () => {
                 <S.InfoContainer>
                     <S.InfoEachContainer>
                         <p>장소</p>
-                        <p>대전광역시 바보구 하은동 가나다라 20-3</p>
+                        <p>{place}</p>
                     </S.InfoEachContainer>
                     <S.InfoEachContainer>
                         <p>날짜</p>
-                        <p>2022년 02월 32일</p>
+                        <p>{date}</p>
                     </S.InfoEachContainer>
                     <S.InfoEachContainer>
                         <p>시간</p>
-                        <p>14시 20분</p>
+                        <p>{meeting_time}</p>
                     </S.InfoEachContainer>
                     <S.InfoEachContainer>
                         <p>인원</p>
-                        <p>2 / 3명</p>
+                        <p>{current_head_count} / {head_count}명</p>
                     </S.InfoEachContainer>
                     
                 </S.InfoContainer>
-                <S.BookBtn onClick={()=>application()}>신청하기</S.BookBtn>
+                {
+                    status==="OPEN"?
+                        <S.BookBtn onClick={()=>application()} >{
+                            is_applied ? 
+                            "신청 취소": "신청하기"
+                        }</S.BookBtn>
+                    :
+                        <S.BookBtn disabled>신청마감</S.BookBtn>
+                }
                 {/* <S.UserListContainer>
                     <Body2>현재 신청자 목록</Body2>
                     <S.UserList>

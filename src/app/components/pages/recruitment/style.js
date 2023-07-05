@@ -47,6 +47,9 @@ export const BookBtn = styled.button`
     :active{
         background-color: ${color.primary8};
     }
+    :disabled{
+        background-color: ${color.grayBase};
+    }
 `
 
 export const UserListContainer = styled.div`
