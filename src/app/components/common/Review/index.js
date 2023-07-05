@@ -1,8 +1,11 @@
+import { useRouter } from "next/navigation"
 import * as S from "./style"
 
-const Review = ({title, content, nickname, image_url}) => {
+const Review = ({title, content, nickname, image_url, id}) => {
+    const router = useRouter();
+
     return(
-        <S.Container>
+        <S.Container onClick={()=> router.push(`/review?id=${id}`)}>
             <div>
                 <S.Title>{title}</S.Title>
                 {image_url && <img src={image_url}/>}

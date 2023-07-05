@@ -1,8 +1,11 @@
+import { useRouter } from "next/navigation";
 import * as S from "./style";
 
-const Recruitment = ({title, date, time, place, nickname}) => {    
+const Recruitment = ({id, title, date, time, place, nickname}) => {    
+    const router = useRouter();
+
     return(
-        <S.Container>
+        <S.Container onClick={()=>router.push(`/recruitment?id=${id}`)}>
             <div>
                 <S.Title>{title}</S.Title>
                 <S.EachContainer>

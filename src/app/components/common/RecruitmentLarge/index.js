@@ -1,8 +1,11 @@
+import { useRouter } from "next/navigation";
 import * as S from "./style";
 
 const RecruitmentLarge = ({id,title, place, date, meeting_time, head_count, current_head_count, status}) => {
+    const router = useRouter();
+
     return (
-        <S.Container>
+        <S.Container onClick={()=>router.push(`/recruitment?id=${id}`)}>
             <div>
                 <S.Title>{title}</S.Title>
                 <div>
