@@ -22,7 +22,12 @@ export const UserInfoContainer = styled.div`
         gap: 6px;
         >div{
             display: flex;
-            gap: 20px
+            gap: 20px;
+            &:first-child{
+                >p{
+                    font-weight: bold;
+                }
+            }
         }
     }
 `
