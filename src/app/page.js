@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./style";
 import Header from "./components/common/Header";
 import { ReviewIcon } from "../../public/assets/reviewIcon";
@@ -8,6 +8,10 @@ import { color } from "./color";
 import RecruitmentLarge from "./components/common/RecruitmentLarge";
 import { Recruitment } from "../../public/assets/recruitment";
 import Review from "./components/common/Review";
+import axios from "axios";
+
+const BASEURL = process.env.NEXT_PUBLIC_SERVER;
+
 
 const Main = () => {
   const param = useSearchParams();
@@ -15,6 +19,42 @@ const Main = () => {
   const router = useRouter();
 
   const [post, setPost] = useState([]);
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token');
+
+    if(type === "re"){
+      axios
+        .request({
+            url: `${BASEURL}/reviews`,
+            method: 'get',
+            headers: {
+              "Authorization": `Bearer ${token}`
+          }
+        })
+        .then((res) => {
+            setPost(res.data.reviews)
+        })
+        .catch(() => {
+            alert('모집글 불러오기 실패');
+        });
+    }else{
+      axios
+      .request({
+          url: `${BASEURL}/feeds`,
+          method: 'get',
+          headers: {
+            "Authorization": `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+          setPost(res.data.feeds)
+      })
+      .catch(() => {
+          alert('모집글 불러오기 실패');
+      });
+    }
+  },[type]);
 
     return(
         <S.FlexBox>
@@ -47,24 +87,6 @@ const Main = () => {
                       </>
                     }
                   </S.SelectContainer>
-                    {/* {
-                      post.map(d=>{
-                        return(
-                          <>
-                            {type === "re"?
-                            <S.ReviewContainer>
-                              <Review {...d}/>
-                            </S.ReviewContainer>
-                            :
-                            <S.PostContainer>
-                              <RecruitmentLarge {...d}/>
-                            </S.PostContainer>
-                          }
-                          </>
-                        )
-                      })
-                    } */}
-
                     {
                       type === "re"?
                         <S.ReviewContainer>
