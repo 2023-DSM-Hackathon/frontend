@@ -7,9 +7,10 @@ const Input = ({
     name,
     value,
     onChange,
+    width="100%"
   }) => {
     return(
-        <S.Container>
+        <S.Container width={width}>
             <S.Title>{title}</S.Title>
             <S.Input 
                 onChange={onChange}
