@@ -11,7 +11,8 @@ const Application = () => {
     const postId = router.get('id');
 
     const application = () => {
-        const token  = localStorage.getItem('token')
+        const token  = localStorage.getItem('token');
+
         axios
         .request({
             url: `${BASEURL}/feeds/${postId}`,
@@ -21,15 +22,10 @@ const Application = () => {
             }
         })
         .then((res) => {
-            const data = res.data
-            setUser(data.user_profile);
-            setAchievements(data.achievements);
-            setFeeds(data.feeds);
-            setFeeds(data.applies);
-            setFeeds(data.reviews);
+            alert("신청이 완료되었습니다.")
         })
         .catch(() => {
-            alert('내 정보 불러오기 실패');
+            alert('신청 실패');
         });
     }
     return (
