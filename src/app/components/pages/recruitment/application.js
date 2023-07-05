@@ -51,7 +51,7 @@ const Application = () => {
                     
                 </S.InfoContainer>
                 <S.BookBtn onClick={()=>application()}>신청하기</S.BookBtn>
-                <S.UserListContainer>
+                {/* <S.UserListContainer>
                     <Body2>현재 신청자 목록</Body2>
                     <S.UserList>
                         <p>1. 홍길동</p>
@@ -59,7 +59,7 @@ const Application = () => {
                         <p>3. 홍길동</p>
                         <p>4. 홍길동</p>
                     </S.UserList>
-                </S.UserListContainer>
+                </S.UserListContainer> */}
             </S.FixedContainer>
         </S.Container>
     )
