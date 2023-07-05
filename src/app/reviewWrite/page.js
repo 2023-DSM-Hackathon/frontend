@@ -5,7 +5,7 @@ import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import * as S from "./style";
 
-const RecruitmentWrite = () =>{
+const ReviewWrite = () =>{
 
     const [userData, setUserData] = useState({
 		title: "",
@@ -51,4 +51,4 @@ const RecruitmentWrite = () =>{
     )
 }
 
-export default RecruitmentWrite;
+export default ReviewWrite;
