@@ -2,12 +2,12 @@
 import { useState } from "react";
 import * as S from "./style";
 import Header from "./components/common/Header";
-import { Review } from "../../public/assets/review";
+import { ReviewIcon } from "../../public/assets/reviewIcon";
 import { useRouter, useSearchParams } from "next/navigation";
 import { color } from "./color";
 import RecruitmentLarge from "./components/common/RecruitmentLarge";
 import { Recruitment } from "../../public/assets/recruitment";
-import PostVeiw from "./components/common/postVeiw";
+import Review from "./components/common/Review";
 
 const Main = () => {
   const param = useSearchParams();
@@ -37,7 +37,7 @@ const Main = () => {
                           <p>모집</p>
                         </S.SelectButton>
                         <S.SelectButton onClick={()=>router.push('/?type=re')}>
-                          <Review/>
+                          <ReviewIcon/>
                           <p>후기</p>
                         </S.SelectButton>
                       </>
@@ -48,7 +48,7 @@ const Main = () => {
                           <p>모집</p>
                         </S.SelectButton>
                         <S.SelectButton color={color.grayBase} onClick={()=>router.push('/?type=re')}>
-                          <Review fill={color.grayBase}/>
+                          <ReviewIcon fill={color.grayBase}/>
                           <p>후기</p>
                         </S.SelectButton>
                       </>
