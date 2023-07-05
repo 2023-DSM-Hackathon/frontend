@@ -4,8 +4,15 @@ import { useState } from "react";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import * as S from "./style";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
+const BASEURL = process.env.NEXT_PUBLIC_SERVER;
+
 
 const RecruitmentWrite = () =>{
+    const router = useRouter();
+
 
     const [userData, setUserData] = useState({
 		title: "",
@@ -33,6 +40,31 @@ const RecruitmentWrite = () =>{
 		})
     }
 
+    const write = () =>{
+        axios
+        .request({
+            url: `${BASEURL}/feeds`,
+            method: 'post',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            data:{
+                "title": userData.time,
+                "place": userData.place,
+                "date": userData.date,
+                "head_count": userData.person,
+                "meeting_time": userData.time,
+                "content": userData.content
+            }
+        })
+        .then((res) => {
+            router.push('/')
+        })
+        .catch(() => {
+            alert('작성 실패');
+        });
+    }
+
     return(
         <S.FlexBox>
             <Header/>
@@ -53,7 +85,7 @@ const RecruitmentWrite = () =>{
                             <S.TextArea onChange={onChange} name={inputType[5].name} placeholder={inputType[5].placeholder}/>
                         </S.TextAreaContainer>
                     </S.InputContainer>
-                    <S.Submit>등록하기</S.Submit>
+                    <S.Submit onChange={()=>write()}>등록하기</S.Submit>
                 </S.Container>  
             </S.FlexBox2>
         </S.FlexBox>
