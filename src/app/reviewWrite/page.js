@@ -4,6 +4,10 @@ import { useState } from "react";
 import Header from "../components/common/Header";
 import Input from "../components/common/Input";
 import * as S from "./style";
+import axios from "axios";
+
+const BASEURL = process.env.NEXT_PUBLIC_SERVER;
+
 
 const ReviewWrite = () =>{
 
@@ -27,6 +31,29 @@ const ReviewWrite = () =>{
 		})
     }
 
+    const Submit = () => {
+        const token = localStorage.getItem('token');
+
+        axios
+        .request({
+            url: `${BASEURL}/reviews`,
+            method: 'post',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            data:{
+                "title": userData.title,
+                "content": userData.content,
+                "image_url": userData.img 
+            }
+        })
+        .then((res) => {
+            router.push('/')
+        })
+        .catch(() => {
+            alert('작성 실패');
+        });
+    }
 
     return(
         <S.FlexBox>
@@ -44,7 +71,7 @@ const ReviewWrite = () =>{
                             <Input onChange={onChange} name={inputType[2].name} title={inputType[2].title} type={inputType[2].type} accept=".image/*"/>
                         </S.TextAreaContainer>
                     </S.InputContainer>
-                    <S.Submit>등록하기</S.Submit>
+                    <S.Submit onClick={()=>Submit()}>등록하기</S.Submit>
                 </S.Container>  
             </S.FlexBox2>
         </S.FlexBox>
