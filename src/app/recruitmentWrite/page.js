@@ -41,6 +41,8 @@ const RecruitmentWrite = () =>{
     }
 
     const write = () =>{
+        const token = localStorage.getItem('token');
+        
         axios
         .request({
             url: `${BASEURL}/feeds`,
