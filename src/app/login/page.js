@@ -15,8 +15,8 @@ const Login = () => {
 	});
 
     const inputType = [
-        { name: "id", title: "아이디", value: "", placeholder: "아이디를 입력해 주세요", type:"text"},
-		{ name: "password", title: "비밀번호", value: "", placeholder: "영·숫자·기호 포함 8자 이상 입력해 주세요" , type:"password"},
+        { name: "id", title: "아이디", placeholder: "아이디를 입력해 주세요", type:"text"},
+		{ name: "password", title: "비밀번호", placeholder: "영·숫자·기호 포함 8자 이상 입력해 주세요" , type:"password"},
 	];
 
     useEffect(()=>{
