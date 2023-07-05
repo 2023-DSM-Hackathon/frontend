@@ -14,14 +14,7 @@ const Main = () => {
   const type = param.get('type');
   const router = useRouter();
 
-  const [post, setPost] = useState([{
-    "id": 1,
-		"nickname": "닉네임",
-		"title": "제목",
-		"content": "내용",
-		"image_url": "이미지 url",
-		"comment_count": 3
-  }]);
+  const [post, setPost] = useState([]);
 
     return(
         <S.FlexBox>
@@ -54,21 +47,38 @@ const Main = () => {
                       </>
                     }
                   </S.SelectContainer>
-                  <S.PostContainer>
-                    {
+                    {/* {
                       post.map(d=>{
                         return(
                           <>
                             {type === "re"?
-                            <Review {...d}/>
+                            <S.ReviewContainer>
+                              <Review {...d}/>
+                            </S.ReviewContainer>
                             :
-                            <RecruitmentLarge {...d}/>
+                            <S.PostContainer>
+                              <RecruitmentLarge {...d}/>
+                            </S.PostContainer>
                           }
                           </>
                         )
                       })
+                    } */}
+
+                    {
+                      type === "re"?
+                        <S.ReviewContainer>
+                          {post.map(d=>
+                              <Review {...d}/>
+                          )}
+                        </S.ReviewContainer>
+                        :
+                        <S.PostContainer>
+                          {post.map(d=>
+                            <RecruitmentLarge {...d}/>
+                          )}
+                        </S.PostContainer>
                     }
-                  </S.PostContainer>
                 </S.Container>  
             </S.FlexBox2>
         </S.FlexBox>

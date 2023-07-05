@@ -35,3 +35,8 @@ export const PostContainer = styled.div`
     flex-direction: column;
     gap: 15px;
 `
+export const ReviewContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+`
