@@ -47,9 +47,9 @@ const Mypage = () =>{
                 <S.FlexBox2>
                 <S.Container>
                     <User {...user} acachievements={acachievements}/>
-                    <Post type={1} posts={feeds} title="내가 모집한 줍깅" link="/myrecruit"  />
-                    <Post type={1} posts={applies} title="참가 신청한 줍깅" link="/book"  />
-                    <Post type={2} posts={reviews} title="내가 작성한 후기글" link="/myreview"  />
+                    <Post type={1} posts={feeds.slice(0,4)} title="내가 모집한 줍깅" link="/myrecruit"  />
+                    <Post type={1} posts={applies.slice(0,3)} title="참가 신청한 줍깅" link="/book"  />
+                    <Post type={2} posts={reviews.slice(0,3)} title="내가 작성한 후기글" link="/myreview"  />
                     
                 </S.Container>  
             </S.FlexBox2>
