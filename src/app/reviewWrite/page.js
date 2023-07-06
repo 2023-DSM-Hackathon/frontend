@@ -47,8 +47,8 @@ const ReviewWrite = () =>{
         const formData = new FormData();
         formData.append("title", userData.title);
         formData.append("content", userData.content);
-        formData.append("image_url", userData.img);
-
+        formData.append("file", userData.img);
+        console.log("asd")
         axios
         .request({
             url: `${BASEURL}/reviews`,
@@ -60,6 +60,7 @@ const ReviewWrite = () =>{
         })
         .then((res) => {
             router.push('/')
+            console.log(res.data)
         })
         .catch((err) => {
             alert('작성 실패');
@@ -76,11 +77,11 @@ const ReviewWrite = () =>{
                         <Input onChange={onChange} title={inputType[0].title} name={inputType[0].name} placeholder={inputType[0].placeholder} type={inputType[0].type}/>
                         <S.TextAreaContainer>
                             <S.InputTitle>{inputType[1].title}</S.InputTitle>
-                            <S.TextArea onChange={onChange} name={inputType[1].name} placeholder={inputType[1].placeholder}/>
+                            <S.TextArea maxLength={255} onChange={onChange} name={inputType[1].name} placeholder={inputType[1].placeholder}/>
                         </S.TextAreaContainer>
                         <S.TextAreaContainer>
                             <S.InputTitle></S.InputTitle>
-                            <Input onChange={onChangeFiles} name={inputType[2].name} title={inputType[2].title} type={inputType[2].type} accept=".png, .jpg"/>
+                            <Input  onChange={onChangeFiles} name={inputType[2].name} title={inputType[2].title} type={inputType[2].type} accept=".png, .jpg"/>
                         </S.TextAreaContainer>
                     </S.InputContainer>
                     <S.Submit onClick={()=>Submit()}>등록하기</S.Submit>

@@ -16,7 +16,7 @@ const SignUp = () => {
 		nick: "",
 		id: "",
 		password: "",
-        gender:"man"
+        gender:"MALE"
 	});
 
     const inputType = [
@@ -35,6 +35,7 @@ const SignUp = () => {
     };
 
     const SingUp = () => {
+        console.log(userData)
         axios
         .request({
             url: `${BASEURL}/users`,

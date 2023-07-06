@@ -3,7 +3,8 @@ import * as S from "./style";
 import { Crown } from "../../../../../../public/assets/crown";
 import { color } from "@/app/color";
 
-export const User = ({id, nickname, birth_date, account_id, gender, acachievements}) => {
+export const User = ({id, nickname, birth_date, account_id, sex, acachievements, len}) => {
+    const suc = [3, 10,5]
     return (
         <S.Container>
             <S.UserInfoContainer>
@@ -19,7 +20,7 @@ export const User = ({id, nickname, birth_date, account_id, gender, acachievemen
 
                         <div>
                             <p>{account_id}</p>
-                            <p>{gender}</p>
+                            <p>{sex === "FEMALE" ? "남성":"여성"}</p>
                             <p>{birth_date}</p>
                         </div>
                     </div>
@@ -29,8 +30,8 @@ export const User = ({id, nickname, birth_date, account_id, gender, acachievemen
                 {
                     acachievements.map((d,i)=>
                         <S.CrownContainer key={i}>
-                            <Crown fill={d.success? "#EAD947": color.grayBase} width="80px"/>
-                            <p>{d.content}</p>
+                            <Crown fill={len[i] >=suc[i] ? "#EAD947": color.grayBase} width="80px"/>
+                            <p>{d.content.split(" ")[0]+" "+d.content.split(" ")[1]} <br/> {len[i]} / {suc[i]}</p>
                         </S.CrownContainer>
                     )
                 }

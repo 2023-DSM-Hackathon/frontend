@@ -29,6 +29,7 @@ const Mypage = () =>{
             }
         })
         .then((res) => {
+            console.log(res.data)
             const data = res.data
             setUser(data.user_profile);
             setAchievements(data.achievements);
@@ -46,11 +47,10 @@ const Mypage = () =>{
             <Header/>
                 <S.FlexBox2>
                 <S.Container>
-                    <User {...user} acachievements={acachievements}/>
+                    <User {...user} acachievements={acachievements} len={[feeds.length, applies.length, reviews.length]}/>
                     <Post type={1} posts={feeds.slice(0,4)} title="내가 모집한 줍깅" link="/myrecruit"  />
                     <Post type={1} posts={applies.slice(0,3)} title="참가 신청한 줍깅" link="/book"  />
                     <Post type={2} posts={reviews.slice(0,3)} title="내가 작성한 후기글" link="/myreview"  />
-                    
                 </S.Container>  
             </S.FlexBox2>
         </S.FlexBox>

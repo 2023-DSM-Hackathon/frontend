@@ -92,6 +92,7 @@ export const Container = styled.div`
     gap: 30px;
     width: 70%;
     margin-top: 35px;
+    margin-bottom: 50px;
 `
 
 

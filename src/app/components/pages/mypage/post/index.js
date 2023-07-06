@@ -15,9 +15,9 @@ const Post = ({title, posts, link, type}) =>{
             <S.PostContainer>
                 {posts.map((d,i)=>
                     type === 1 ?
-                        <Recruitment key={i} title={d.title} date={d.date} time={d.meeting_time} place={d.place}/>
+                        <Recruitment key={i} {...d}/>
                         :
-                        <Review key={i} title={d.title} content={d.content} image_url={d.image_url}/>
+                        <Review key={i} {...d}/>
                         )}
             </S.PostContainer>
         </S.Container>

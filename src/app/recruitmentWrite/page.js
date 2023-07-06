@@ -13,7 +13,6 @@ const BASEURL = process.env.NEXT_PUBLIC_SERVER;
 const RecruitmentWrite = () =>{
     const router = useRouter();
 
-
     const [userData, setUserData] = useState({
 		title: "",
 		date: "",
@@ -42,7 +41,7 @@ const RecruitmentWrite = () =>{
 
     const write = () =>{
         const token = localStorage.getItem('token');
-        
+        console.log(userData.time)
         axios
         .request({
             url: `${BASEURL}/feeds`,
@@ -51,7 +50,7 @@ const RecruitmentWrite = () =>{
                 "Authorization": `Bearer ${token}`
             },
             data:{
-                "title": userData.time,
+                "title": userData.title,
                 "place": userData.place,
                 "date": userData.date,
                 "head_count": userData.person,
@@ -62,7 +61,8 @@ const RecruitmentWrite = () =>{
         .then((res) => {
             router.push('/')
         })
-        .catch(() => {
+        .catch((er) => {
+            console.log(er)
             alert('작성 실패');
         });
     }
@@ -84,7 +84,7 @@ const RecruitmentWrite = () =>{
                         </S.SmallInput>
                         <S.TextAreaContainer>
                             <S.InputTitle>{inputType[5].title}</S.InputTitle>
-                            <S.TextArea onChange={onChange} name={inputType[5].name} placeholder={inputType[5].placeholder}/>
+                            <S.TextArea maxLength={255} onChange={onChange} name={inputType[5].name} placeholder={inputType[5].placeholder}/>
                         </S.TextAreaContainer>
                     </S.InputContainer>
                     <S.Submit onClick={()=>write()}>등록하기</S.Submit>

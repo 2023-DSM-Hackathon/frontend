@@ -3,6 +3,7 @@ import * as S from "./style";
 
 const Recruitment = ({id, title, date, time, place, nickname}) => {    
     const router = useRouter();
+    console.log(id)
 
     return(
         <S.Container onClick={()=>router.push(`/recruitment?id=${id}`)}>

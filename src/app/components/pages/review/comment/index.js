@@ -18,7 +18,8 @@ const Comment = ({comments}) => {
 
     const SubmitComment = () => {
         const token  = localStorage.getItem('token');
-
+        console.log("click");
+        
         axios
         .request({
             url: `${BASEURL}/comments/${reviewID}`,
@@ -31,6 +32,7 @@ const Comment = ({comments}) => {
             }
         })
         .then((res) => {
+            console.log("성공")
         })
         .catch(() => {
             alert('댓글 작성 실패');
@@ -47,9 +49,9 @@ const Comment = ({comments}) => {
             <S.CommentContainer>
                 {
                     comments.map((d)=>
-                        <S.EachComment key={d.id}>
-                            <p>{d.nickname}</p>
+                    <S.EachComment key={d.id}>
                             <p>{d.content}</p>
+                            <p>{d.nickname}</p>
                         </S.EachComment>
                     )
                 }

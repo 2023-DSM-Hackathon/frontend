@@ -5,7 +5,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 14px 20px;
+    padding: 24px 20px;
     width: 210px;
     border-radius: 10px;
     box-shadow: 0px 0px 4px 0px gray;
@@ -13,10 +13,11 @@ export const Container = styled.div`
     >div{
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
         >img{
             border-radius: 8px;
             max-height: 150px;
+            margin-bottom: -2px;
         }
     }
 `

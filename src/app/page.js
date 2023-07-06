@@ -34,7 +34,7 @@ const Main = () => {
             method: 'get',
             headers: {
               "Authorization": `Bearer ${token}`
-          }
+            }
         })
         .then((res) => {
             setPost(res.data.reviews)

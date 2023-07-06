@@ -27,7 +27,7 @@ const RecruitmentLarge = ({id,title, place, date, meeting_time, head_count, curr
                     <S.EachContainer>
                         <S.SubTitle>인원</S.SubTitle>
                         <p>-</p>
-                        <S.Content>{head_count} / {current_head_count}</S.Content>
+                        <S.Content>{current_head_count} / {head_count}</S.Content>
                     </S.EachContainer>
                 </div>
             </div>

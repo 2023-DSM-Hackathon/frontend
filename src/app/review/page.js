@@ -15,14 +15,12 @@ const Review = () => {
     const router = useSearchParams();
     const postId = router.get('id');
 
-    const [post, setPost] = useState({
-        "id": 1,
-        "image_url": "",
-        "title": "",
-        "content": "",
-        "nickname": "",
-        "comments": []
-    });
+    const [post, setPost] = useState({"id": 1,
+	"image_url": "",
+	"title": "",
+	"content": "",
+	"nickname": "",
+	"comments": []});
 
     useEffect(()=>{
         const token  = localStorage.getItem('token');
@@ -49,7 +47,7 @@ const Review = () => {
             <Header/>
             <S.FlexBox2>
                 <S.Container>
-                    <PostVeiw title={post.title} nickname={post.nickname} content={post.content} img={post.image_url}/>
+                    <PostVeiw title={post.title} nickname={post.nickname} content={post.content} img={`${BASEURL}/static/${post.image_url}`}/>
                     <Comment comments={post.comments}/>
                 </S.Container>
             </S.FlexBox2>
